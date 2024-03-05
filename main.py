@@ -1,5 +1,4 @@
-from BlackScholes import BlackScholes
-from Trajectory import Trajectory
+from scripts.BlackScholes import BlackScholes
 
 import numpy as np
 
@@ -78,10 +77,10 @@ print("Average discounted portfolio value =",round(np.exp(-rJ*T)*np.mean(Vpf),4)
 
 import matplotlib.pyplot as plt 
 plt.figure(figsize=(20,10))
-plt.scatter(ST,Vpf,label="Discrete hedging of a call option",color='blue')
+plt.scatter(ST,Vpf,label="Discrete hedging of a call option",color='black')
 plt.ylabel("Value of hedge portfolio(T)")
 plt.xlabel("S(T)")
 x = np.sort(ST)
-plt.plot(x,alpha*np.maximum(x-K,0),label='Payoff')
+plt.plot(x,alpha*np.maximum(x-K,0),label='Payoff',color='red')
 plt.title("Replication of vanila option")
 plt.show()

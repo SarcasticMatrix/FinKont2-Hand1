@@ -45,6 +45,7 @@ class BlackScholes:
             print("greek_type must be: 'none', 'delta' or 'gamma' ")
 
     def call(self,spot):
+        """ Compute call """
         cdf_value1 = norm().cdf(self.d1)
         cdf_value2 = norm().cdf(self.d2)
         self.price = (
@@ -53,6 +54,7 @@ class BlackScholes:
         )
 
     def put(self,spot):
+        """ Compute put """
         cdf_value1 = norm().cdf(self.d1)
         cdf_value2 = norm().cdf(self.d2)
         self.price = (
@@ -66,7 +68,7 @@ class BlackScholes:
 
     def put_delta(self):
         cdf_value1 = norm().cdf(self.d1)
-        self.price = cdf_value1 + np.exp(-self.q * self.T)
+        self.price = np.exp(-self.q * self.T) * (cdf_value1 - 1) # cdf_value1 + np.exp(-self.q * self.T)
 
     def valuation(self,spot):
         """
